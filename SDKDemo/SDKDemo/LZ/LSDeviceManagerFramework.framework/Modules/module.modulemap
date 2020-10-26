@@ -1,0 +1,6 @@
+framework module LSDeviceManagerFramework {
+  umbrella header "LSDeviceManagerFramework-umbrella.h"
+
+  export *
+  module * { export * }
+}

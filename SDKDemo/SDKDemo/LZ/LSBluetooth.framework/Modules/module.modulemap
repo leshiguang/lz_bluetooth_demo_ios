@@ -1,0 +1,6 @@
+framework module LSBluetooth {
+  umbrella header "LSBluetooth-umbrella.h"
+
+  export *
+  module * { export * }
+}

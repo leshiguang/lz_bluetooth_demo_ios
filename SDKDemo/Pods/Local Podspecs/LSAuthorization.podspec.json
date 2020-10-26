@@ -1,0 +1,37 @@
+{
+  "name": "LSAuthorization",
+  "version": "0.2.4",
+  "summary": "A short description of LSAuthorization.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://gitlab.lifesense.com/lego/LSAuthorization.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "alex.wu": "alex.wu@dianping.com"
+  },
+  "source": {
+    "git": "git@gitlab.lifesense.com:lego/LSAuthorization.git",
+    "tag": "0.2.4"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LSAuthorization/Classes/Public/*",
+  "resource_bundles": {
+    "LSAuthorization": [
+      "LSAuthorization/Assets/*"
+    ]
+  },
+  "vendored_frameworks": "LSAuthorizationFramework-0.2.4/ios/LSAuthorizationFramework.framework",
+  "public_header_files": "LSAuthorization/Classes/Public/*.h",
+  "dependencies": {
+    "LSNetwork_iOS": [
+
+    ]
+  },
+  "user_target_xcconfig": {
+    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"
+  }
+}

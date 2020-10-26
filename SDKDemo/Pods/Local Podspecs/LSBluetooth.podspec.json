@@ -1,0 +1,42 @@
+{
+  "name": "LSBluetooth",
+  "version": "4.1",
+  "summary": "乐心蓝牙底层组件",
+  "description": "乐心蓝牙底层组件",
+  "homepage": "https://gitlab.lifesense.com/component/lsbluetooth",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "alex.wu": "yong.wu@lifesense.com"
+  },
+  "source": {
+    "git": "git@gitlab.lifesense.com:component/lsbluetooth.git",
+    "commit": "07f23526b224adcee5c46e358d26c2e33b8e0cd5"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source_files": "LSBluetooth/Classes/**/*",
+  "public_header_files": "LSBluetooth/Classes/BluetoothArch/**/{LSBLEDeviceManager,BleManagerProfiles,BleCommonProperties,LSWeightData,LSHeightData,LSKitchenScaleData,LSSphygmometerData,LSPedometerData,LSWeightAppendData,LSProductUserInfo,LSDeviceInfo,LSBlePairingDelegate,LSBleDataReceiveDelegate,LSBBleExceptionRecord,LSPedometerUserInfo,LSProductUserInfo,LSPedometerAlarmClock,LSVibrationVoice,LSDeviceConnectDelegate,LSBluetoothStateChangeDelegate,LSBleStatistic,LSErrorRecord,LogManager,LSBleActionEvent,FileManger,NSMutableArray+QueueAdditions,model,LSSleepRecord,LSDBaseModel,LSDAlarmClock,LSDLaunchOrCloseSport,LSDCallReminder,LSDAppidReminder,LSDConfirmPair,LSDDeviceInfo,LSDCommonResult,LSDEncourage,LSDHeartRate,LSDPreventLost,LSDPushGetInfo,LSDSedentary,LSDSportHeartRate,LSDUserInfo,LSDWeekTarget,LSDPushGetInfo,LSDHeartSection,LSDNightMode,LSDScreenDisplay,LSDWearingModel,LSDDisplayPage,LSDSmartHeart,LSDSportState,LSDDialModel,LSDAutomaticSportstype,LSDWeatherData,LSDEncourageTypeModel,LSDEventInfo,LSDDistanceUnit,LSDTimeType,LSDGpsStatus,LSDSportHRRemind,LSDSpeedModel,LSDLanguageModel,LSDSwimModel,LSUESportData,LSDNotDisturbMode,LSUBaseModel,LSUBloodOxygen,LSUDeviceInfo,LSUHearRate,LSUMeasureData,LSUSleepData,LSUSportData,LSURunningData,LSUSwimData,LSUFitnessData,LSURideData,LSUBasketballData,LSUFootballData,LSUBadmintonData,LSUVolleyballData,LSUTableTennisData,LSUYogaData,LSUGymDanceSportData,LSUTaijiSportData,LSUIndoorRunSportData,LSUCycleMactionSportData,LSUOxSportSportData,LSUGetDeviceInfo,LSUSportHeartRate,LSUVoltageModel,LSUHRSection,LSUCaloriesData,LSUSportState,LSUReportSportState,LSUTestDataModel,LSUWalkingData,LSUConfigurationSpeed,LSURealTimeHRData,LSUNewMeasureData,LSULogData,LSUTestData,LSConst,BleDebugLogger,libCommon,a6model,LSBleConnector,LSBleConnectorDelegate,LSFormatConverter,LSBleStatusChangeDelegate,CBUUID+Ext,LSDeviceProfiles,LSBleReportCentre,LSProtocolWorkflow,LSBleReportCentreDelegate,LSUBaseSportData,LSSportFreqInfo,Constants,LSLog,LSDUserInformation,LSDTargetInfomation,LSDInfomationClear,LSDSettingUnit,LSDSettingTime,LSDSyncDataNotify,LSDACKModel,LSDSettingRespModel,LSDLoginRespModel,LSDInitRespModel,LSUSettingResult,LSUUserData,LSUUnitSettingData,LSUTargetSettingData,LSUSyncMeasureData,c,LSUInitReqModel,LSWeightScaleBatteryInfo,LSULoginReqModel,LZScanWifiModel,LSScaleWifiModel,LZConnectWifiModel}.h",
+  "libraries": [
+    "z",
+    "c++",
+    "stdc++"
+  ],
+  "dependencies": {
+    "WCDB": [
+
+    ],
+    "Protobuf": [
+
+    ],
+    "LSNDBManager": [
+
+    ]
+  },
+  "requires_arc": [
+    "LSBluetooth/Classes/**/*.{m,mm}"
+  ]
+}

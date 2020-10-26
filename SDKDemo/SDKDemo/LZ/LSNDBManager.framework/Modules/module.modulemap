@@ -1,0 +1,6 @@
+framework module LSNDBManager {
+  umbrella header "LSNDBManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

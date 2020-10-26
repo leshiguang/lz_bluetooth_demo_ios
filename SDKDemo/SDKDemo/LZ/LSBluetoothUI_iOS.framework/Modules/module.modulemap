@@ -1,0 +1,6 @@
+framework module LSBluetoothUI_iOS {
+  umbrella header "LSBluetoothUI_iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

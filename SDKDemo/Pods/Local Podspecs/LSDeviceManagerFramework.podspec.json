@@ -1,0 +1,73 @@
+{
+  "name": "LSDeviceManagerFramework",
+  "version": "5.0.0",
+  "summary": "乐心运动4.0 设备组件sdk",
+  "description": "旧版本的设备组件，抽成库，方便其他模块组件化",
+  "homepage": "https://gitlab.lifesense.com/foundationBussinessLogic/LSDeviceManager.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "wenZheng zhang": "zh4ngwenzheng@gmail.com"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://gitlab.lifesense.com/foundationBussinessLogic/LSDeviceManager.git",
+    "commit": "36de6f3cc6e8832c0549d141d9aaa575ccac69a6"
+  },
+  "source_files": [
+    "LSDeviceManagerFramework/LSDeviceManagerFramework.h",
+    "LSDeviceManagerFramework/DeviceManager/ConstantConversion/**/*.{h,m}",
+    "LSDeviceManagerFramework/DeviceManager/NetworkRequest/**/*.{h,m}",
+    "LSDeviceManagerFramework/DeviceManager/Interface/DeviceManager/**/*.{h,m,mm}",
+    "LSDeviceManagerFramework/DeviceManager/Interface/Model/**/*.{h,m}",
+    "LSDeviceManagerFramework/DeviceManager/Interface/Other/**/*.{h,m}",
+    "LSDeviceManagerFramework/DeviceManager/Interface/DB/**/*.{h,m}",
+    "LSDeviceManagerFramework/LinkedFrameworks/SmartLink/**/*.h",
+    "LSDeviceManagerFramework/LinkedFrameworks/LSWifiConfig/**/*.{h,mm,cpp}",
+    "LSDeviceManagerFramework/LinkedFrameworks/SmartLink/**/*.{h,m,c}"
+  ],
+  "public_header_files": [
+    "LSDeviceManagerFramework/LSDeviceManagerFramework.h",
+    "LSDeviceManagerFramework/DeviceManager/ConstantConversion/LSDMConstants.h",
+    "LSDeviceManagerFramework/DeviceManager/Interface/DB/**/*.h",
+    "LSDeviceManagerFramework/DeviceManager/Interface/Other/**/*.h",
+    "LSDeviceManagerFramework/DeviceManager/Interface/Model/**/*.h",
+    "LSDeviceManagerFramework/DeviceManager/Interface/DeviceManager/**/*.h",
+    "LSDeviceManagerFramework/LinkedFrameworks/SmartLink/HFSmartLink*.h",
+    "LSDeviceManagerFramework/LinkedFrameworks/LSWifiConfig/LSWifiConfig.h"
+  ],
+  "resource_bundles": {
+    "LSDeviceManager": [
+      "LSDeviceManagerFramework/DeviceManager/NetworkRequest/LSDeviceManager.bundle/*"
+    ]
+  },
+  "resources": "LSDeviceManagerFramework/DeviceManager/Interface/DB/*.xcdatamodeld",
+  "libraries": [
+    "z",
+    "c++",
+    "stdc++"
+  ],
+  "dependencies": {
+    "LSNetwork_iOS": [
+
+    ],
+    "LSBluetooth": [
+
+    ],
+    "YYModel": [
+
+    ]
+  },
+  "user_target_xcconfig": {
+    "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1"
+  },
+  "pod_target_xcconfig": {
+    "OTHER_LDFLAGS": "-ObjC",
+    "ENABLE_BITCODE": "NO",
+    "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1"
+  }
+}
