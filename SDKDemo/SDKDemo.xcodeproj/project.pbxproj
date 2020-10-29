@@ -8,16 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		15B5A583CE5D2DC42725E5BE /* Pods_SDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5EDF557A047B980643831 /* Pods_SDKDemo.framework */; };
-		9786FF4A25318D6000633D09 /* LSAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4625318D6000633D09 /* LSAuthorization.framework */; };
-		9786FF4B25318D6000633D09 /* LSNetwork_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4725318D6000633D09 /* LSNetwork_iOS.framework */; };
+		9786FF4A25318D6000633D09 /* LSAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4625318D6000633D09 /* LSAuthorization.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		9786FF4B25318D6000633D09 /* LSNetwork_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4725318D6000633D09 /* LSNetwork_iOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9786FF4C25318D6000633D09 /* LSDeviceManagerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4825318D6000633D09 /* LSDeviceManagerFramework.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		9786FF4D25318D6000633D09 /* LSBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4925318D6000633D09 /* LSBluetooth.framework */; };
+		9786FF4D25318D6000633D09 /* LSBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF4925318D6000633D09 /* LSBluetooth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9786FF4E25318D8B00633D09 /* LSAuthorization.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9786FF4625318D6000633D09 /* LSAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9786FF4F25318D8B00633D09 /* LSBluetooth.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9786FF4925318D6000633D09 /* LSBluetooth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9786FF5025318D8B00633D09 /* LSDeviceManagerFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9786FF4825318D6000633D09 /* LSDeviceManagerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9786FF5125318D8B00633D09 /* LSNetwork_iOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9786FF4725318D6000633D09 /* LSNetwork_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9786FF5525318EF300633D09 /* LSNDBManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9786FF5425318EF300633D09 /* LSNDBManager.framework */; };
-		9786FF5825318EFC00633D09 /* LSNDBManager.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9786FF5425318EF300633D09 /* LSNDBManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		978B3992253986DC003CFD61 /* LSBluetoothUI_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 978B3991253986DC003CFD61 /* LSBluetoothUI_iOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		978B3993253986E3003CFD61 /* LSBluetoothUI_iOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 978B3991253986DC003CFD61 /* LSBluetoothUI_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		978B39AF25398A01003CFD61 /* LZUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B39AE25398A01003CFD61 /* LZUIViewController.m */; };
@@ -55,7 +53,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				978B3993253986E3003CFD61 /* LSBluetoothUI_iOS.framework in CopyFiles */,
-				9786FF5825318EFC00633D09 /* LSNDBManager.framework in CopyFiles */,
 				9786FF4E25318D8B00633D09 /* LSAuthorization.framework in CopyFiles */,
 				9786FF4F25318D8B00633D09 /* LSBluetooth.framework in CopyFiles */,
 				9786FF5025318D8B00633D09 /* LSDeviceManagerFramework.framework in CopyFiles */,
@@ -72,7 +69,6 @@
 		9786FF4725318D6000633D09 /* LSNetwork_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSNetwork_iOS.framework; sourceTree = "<group>"; };
 		9786FF4825318D6000633D09 /* LSDeviceManagerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSDeviceManagerFramework.framework; sourceTree = "<group>"; };
 		9786FF4925318D6000633D09 /* LSBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSBluetooth.framework; sourceTree = "<group>"; };
-		9786FF5425318EF300633D09 /* LSNDBManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSNDBManager.framework; sourceTree = "<group>"; };
 		978B3991253986DC003CFD61 /* LSBluetoothUI_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSBluetoothUI_iOS.framework; sourceTree = "<group>"; };
 		978B39AD25398A01003CFD61 /* LZUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZUIViewController.h; sourceTree = "<group>"; };
 		978B39AE25398A01003CFD61 /* LZUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZUIViewController.m; sourceTree = "<group>"; };
@@ -99,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9786FF5525318EF300633D09 /* LSNDBManager.framework in Frameworks */,
 				15B5A583CE5D2DC42725E5BE /* Pods_SDKDemo.framework in Frameworks */,
 				9786FF4A25318D6000633D09 /* LSAuthorization.framework in Frameworks */,
 				9786FF4C25318D6000633D09 /* LSDeviceManagerFramework.framework in Frameworks */,
@@ -197,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				978B3991253986DC003CFD61 /* LSBluetoothUI_iOS.framework */,
-				9786FF5425318EF300633D09 /* LSNDBManager.framework */,
 				9786FF4625318D6000633D09 /* LSAuthorization.framework */,
 				9786FF4925318D6000633D09 /* LSBluetooth.framework */,
 				9786FF4825318D6000633D09 /* LSDeviceManagerFramework.framework */,
@@ -279,7 +273,7 @@
 		97926AF72520B9640043ED60 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					97926AFE2520B9640043ED60 = {
 						CreatedOnToolsVersion = 12.0;
@@ -564,13 +558,14 @@
 					"$(PROJECT_DIR)/SDKDemo/LZ",
 				);
 				INFOPLIST_FILE = SDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wm.SDKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -590,13 +585,14 @@
 					"$(PROJECT_DIR)/SDKDemo/LZ",
 				);
 				INFOPLIST_FILE = SDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wm.SDKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

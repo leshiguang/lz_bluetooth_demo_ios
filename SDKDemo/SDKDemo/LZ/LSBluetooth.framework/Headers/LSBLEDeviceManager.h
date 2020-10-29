@@ -572,6 +572,6 @@ typedef void(^ConnectStatusBlock)(NSString *deviceId);
 
 - (void)connectWifi:(LSDeviceInfo *)deviceInfo bssid:(NSString *)bssid password:(NSString *)password callback:(WriteCallback)callback;
 
-- (void)connectA6ProtocolDevice:(LSDeviceInfo *)deviceInfo;
+//- (void)connectA6ProtocolDevice:(LSDeviceInfo *)deviceInfo;
  
 @end
