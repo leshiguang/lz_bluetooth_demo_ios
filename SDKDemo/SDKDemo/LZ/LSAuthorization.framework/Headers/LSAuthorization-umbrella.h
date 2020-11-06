@@ -10,14 +10,15 @@
 #endif
 #endif
 
-#import "LSAccountAuthorizeRequest.h"
 #import "LSAccountAuthorizeResponse.h"
 #import "LSAuthAccountService.h"
 #import "LSAuthorizationDelegate.h"
 #import "LSAuthorizationService.h"
 #import "LSAuthorizeRequest.h"
 #import "LSAuthorizeResponse.h"
+#import "LSAuthorizeTool.h"
 #import "LSKeyChainAccessUtils.h"
+#import "LSNewAccountAuthorizeRequest.h"
 #import "LSProtocolPathUtils.h"
 #import "LSReportTimezoneRequest.h"
 #import "LSAuthorization.h"

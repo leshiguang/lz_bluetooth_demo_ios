@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		15B5A583CE5D2DC42725E5BE /* Pods_SDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5EDF557A047B980643831 /* Pods_SDKDemo.framework */; };
-		971E27DB255434160061EE95 /* LSAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E27D6255434160061EE95 /* LSAuthorization.framework */; };
-		971E27DC255434160061EE95 /* LSDeviceManagerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E27D7255434160061EE95 /* LSDeviceManagerFramework.framework */; };
-		971E27DD255434160061EE95 /* LSNetwork_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E27D8255434160061EE95 /* LSNetwork_iOS.framework */; };
-		971E27DE255434160061EE95 /* LSBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E27D9255434160061EE95 /* LSBluetooth.framework */; };
-		971E27DF255434160061EE95 /* LSBluetoothUI_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E27DA255434160061EE95 /* LSBluetoothUI_iOS.framework */; };
-		971E27E02554341E0061EE95 /* LSAuthorization.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E27D6255434160061EE95 /* LSAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		971E27E12554341E0061EE95 /* LSBluetooth.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E27D9255434160061EE95 /* LSBluetooth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		971E27E22554341E0061EE95 /* LSBluetoothUI_iOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E27DA255434160061EE95 /* LSBluetoothUI_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		971E27E32554341E0061EE95 /* LSDeviceManagerFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E27D7255434160061EE95 /* LSDeviceManagerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		971E27E42554341E0061EE95 /* LSNetwork_iOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E27D8255434160061EE95 /* LSNetwork_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971E288F255573480061EE95 /* LSDeviceManagerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E288A255573480061EE95 /* LSDeviceManagerFramework.framework */; };
+		971E2890255573480061EE95 /* LSAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E288B255573480061EE95 /* LSAuthorization.framework */; };
+		971E2891255573490061EE95 /* LSBluetoothUI_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E288C255573480061EE95 /* LSBluetoothUI_iOS.framework */; };
+		971E2892255573490061EE95 /* LSNetwork_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E288D255573480061EE95 /* LSNetwork_iOS.framework */; };
+		971E2893255573490061EE95 /* LSBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 971E288E255573480061EE95 /* LSBluetooth.framework */; };
+		971E2896255573640061EE95 /* LSAuthorization.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E288B255573480061EE95 /* LSAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971E2897255573640061EE95 /* LSBluetooth.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E288E255573480061EE95 /* LSBluetooth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971E2898255573640061EE95 /* LSBluetoothUI_iOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E288C255573480061EE95 /* LSBluetoothUI_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971E2899255573640061EE95 /* LSDeviceManagerFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E288A255573480061EE95 /* LSDeviceManagerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971E289A255573640061EE95 /* LSNetwork_iOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 971E288D255573480061EE95 /* LSNetwork_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		978B39AF25398A01003CFD61 /* LZUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B39AE25398A01003CFD61 /* LZUIViewController.m */; };
 		97926B042520B9640043ED60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97926B032520B9640043ED60 /* AppDelegate.m */; };
 		97926B0A2520B9640043ED60 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97926B092520B9640043ED60 /* ViewController.m */; };
@@ -52,11 +52,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				971E27E02554341E0061EE95 /* LSAuthorization.framework in CopyFiles */,
-				971E27E12554341E0061EE95 /* LSBluetooth.framework in CopyFiles */,
-				971E27E22554341E0061EE95 /* LSBluetoothUI_iOS.framework in CopyFiles */,
-				971E27E32554341E0061EE95 /* LSDeviceManagerFramework.framework in CopyFiles */,
-				971E27E42554341E0061EE95 /* LSNetwork_iOS.framework in CopyFiles */,
+				971E2896255573640061EE95 /* LSAuthorization.framework in CopyFiles */,
+				971E2897255573640061EE95 /* LSBluetooth.framework in CopyFiles */,
+				971E2898255573640061EE95 /* LSBluetoothUI_iOS.framework in CopyFiles */,
+				971E2899255573640061EE95 /* LSDeviceManagerFramework.framework in CopyFiles */,
+				971E289A255573640061EE95 /* LSNetwork_iOS.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,11 +65,11 @@
 /* Begin PBXFileReference section */
 		03C5EDF557A047B980643831 /* Pods_SDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A637444E92DC7116E1EE63 /* Pods-SDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKDemo.release.xcconfig"; path = "Target Support Files/Pods-SDKDemo/Pods-SDKDemo.release.xcconfig"; sourceTree = "<group>"; };
-		971E27D6255434160061EE95 /* LSAuthorization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSAuthorization.framework; sourceTree = "<group>"; };
-		971E27D7255434160061EE95 /* LSDeviceManagerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSDeviceManagerFramework.framework; sourceTree = "<group>"; };
-		971E27D8255434160061EE95 /* LSNetwork_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSNetwork_iOS.framework; sourceTree = "<group>"; };
-		971E27D9255434160061EE95 /* LSBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSBluetooth.framework; sourceTree = "<group>"; };
-		971E27DA255434160061EE95 /* LSBluetoothUI_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSBluetoothUI_iOS.framework; sourceTree = "<group>"; };
+		971E288A255573480061EE95 /* LSDeviceManagerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSDeviceManagerFramework.framework; sourceTree = "<group>"; };
+		971E288B255573480061EE95 /* LSAuthorization.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSAuthorization.framework; sourceTree = "<group>"; };
+		971E288C255573480061EE95 /* LSBluetoothUI_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSBluetoothUI_iOS.framework; sourceTree = "<group>"; };
+		971E288D255573480061EE95 /* LSNetwork_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSNetwork_iOS.framework; sourceTree = "<group>"; };
+		971E288E255573480061EE95 /* LSBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LSBluetooth.framework; sourceTree = "<group>"; };
 		978B39AD25398A01003CFD61 /* LZUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZUIViewController.h; sourceTree = "<group>"; };
 		978B39AE25398A01003CFD61 /* LZUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZUIViewController.m; sourceTree = "<group>"; };
 		97926AFF2520B9640043ED60 /* lZ UI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lZ UI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,12 +95,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				971E2891255573490061EE95 /* LSBluetoothUI_iOS.framework in Frameworks */,
+				971E288F255573480061EE95 /* LSDeviceManagerFramework.framework in Frameworks */,
+				971E2893255573490061EE95 /* LSBluetooth.framework in Frameworks */,
+				971E2892255573490061EE95 /* LSNetwork_iOS.framework in Frameworks */,
 				15B5A583CE5D2DC42725E5BE /* Pods_SDKDemo.framework in Frameworks */,
-				971E27DC255434160061EE95 /* LSDeviceManagerFramework.framework in Frameworks */,
-				971E27DD255434160061EE95 /* LSNetwork_iOS.framework in Frameworks */,
-				971E27DB255434160061EE95 /* LSAuthorization.framework in Frameworks */,
-				971E27DF255434160061EE95 /* LSBluetoothUI_iOS.framework in Frameworks */,
-				971E27DE255434160061EE95 /* LSBluetooth.framework in Frameworks */,
+				971E2890255573480061EE95 /* LSAuthorization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,11 +191,11 @@
 		97926B6C2520BCAB0043ED60 /* LZ */ = {
 			isa = PBXGroup;
 			children = (
-				971E27D6255434160061EE95 /* LSAuthorization.framework */,
-				971E27D9255434160061EE95 /* LSBluetooth.framework */,
-				971E27DA255434160061EE95 /* LSBluetoothUI_iOS.framework */,
-				971E27D7255434160061EE95 /* LSDeviceManagerFramework.framework */,
-				971E27D8255434160061EE95 /* LSNetwork_iOS.framework */,
+				971E288B255573480061EE95 /* LSAuthorization.framework */,
+				971E288E255573480061EE95 /* LSBluetooth.framework */,
+				971E288C255573480061EE95 /* LSBluetoothUI_iOS.framework */,
+				971E288A255573480061EE95 /* LSDeviceManagerFramework.framework */,
+				971E288D255573480061EE95 /* LSNetwork_iOS.framework */,
 			);
 			path = LZ;
 			sourceTree = "<group>";

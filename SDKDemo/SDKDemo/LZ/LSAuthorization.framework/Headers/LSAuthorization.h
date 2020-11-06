@@ -38,10 +38,6 @@ typedef NS_ENUM(NSInteger, LSAccessCode) {
 -(void) authorizeDevice:(NSString *)appId andService:(NSString *)serviceId andVersion:(NSString *)serviceVersion andMac:(NSString *)mac andModel:(NSString *)model withBlock:(void (^)(LSAccessCode)) complete;
 
 
-- (void)authorizeDevice:(NSString *)appKey appSecret:(NSString *)appSecret associatedId:(NSString *)associatedId block:(void (^)(LSAccessCode)) complete;
-
-
-
 /// 通用服务鉴权接口，针对算法、SDK等
 /// @param serviceId 服务ID，由服务中心指定
 /// @param serviceVersion 服务版本
@@ -49,17 +45,19 @@ typedef NS_ENUM(NSInteger, LSAccessCode) {
 -(void) authorize:(NSString *)appId andService:(NSString *)serviceId andVersion:(NSString *)serviceVersion withBlock:(void (^)(LSAccessCode)) complete;
 
 
-/// 第三方账号授权登录
-/// @param tenantId 租户ID
-/// @param subscriptionId 订阅ID
-/// @param associatedId 第三方账号
-/// @param callback 授权信息
-- (void)authorize:(NSInteger)tenantId andSubscribe:(NSInteger)subscriptionId andThirdUserId:(nonnull NSString *)associatedId callback:(nonnull void(^)(NSUInteger userId, NSString *accessToken))callback;
+/// 上报时区
+/// @param model model
+/// @param mac mac地址
+- (void)reportTimezone:(NSString *)model andMac:(NSString *)mac;
 
-/**
- 上报时区
- */
--(void) reportTimezone:(NSString *)model andMac:(NSString *)mac;
+
+/// 第三方账号授权登录
+/// @param appKey appkey
+/// @param appSecret appSecret
+/// @param associatedId 第三方账号
+/// @param callback 授权信息回调
+- (void)authorizeDevice:(NSString *)appKey appSecret:(NSString *)appSecret associatedId:(NSString *)associatedId callback:(nonnull void(^)(NSUInteger userId, NSString *accessToken))callback;
+
 @end
 
 NS_ASSUME_NONNULL_END

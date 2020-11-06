@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "97926AFE2520B9640043ED60"
-               BuildableName = "SDKDemo.app"
+               BuildableName = "lZ UI Demo.app"
                BlueprintName = "SDKDemo"
                ReferencedContainer = "container:SDKDemo.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97926AFE2520B9640043ED60"
-            BuildableName = "SDKDemo.app"
+            BuildableName = "lZ UI Demo.app"
             BlueprintName = "SDKDemo"
             ReferencedContainer = "container:SDKDemo.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97926AFE2520B9640043ED60"
-            BuildableName = "SDKDemo.app"
+            BuildableName = "lZ UI Demo.app"
             BlueprintName = "SDKDemo"
             ReferencedContainer = "container:SDKDemo.xcodeproj">
          </BuildableReference>

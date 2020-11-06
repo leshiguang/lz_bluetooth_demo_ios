@@ -84,7 +84,7 @@
     [[LSDeviceManager shareInstance] startDataReceiveService];
     __weak typeof(self) weakSelf = self;
     
-    [[LSAuthorization sharedInstance] authorize:1 andSubscribe:6 andThirdUserId:@"test123456" callback:^(NSUInteger userId, NSString * _Nonnull accessToken) {
+    [[LSAuthorization sharedInstance] authorizeDevice:@"lx4ec9b2c924ea7283" appSecret:@"4000898b71644b4711695395ac3b3580d86cabaa" associatedId:@"wm123456" callback:^(NSUInteger userId, NSString * _Nonnull accessToken) {
         weakSelf.lzUserId = [NSString stringWithFormat:@"%ld",(long)userId];
         weakSelf.accessToken = accessToken;
         [[LSDeviceManager shareInstance] loginWithUserId:weakSelf.lzUserId];
