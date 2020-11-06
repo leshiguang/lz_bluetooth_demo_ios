@@ -7,6 +7,9 @@
 
 #import "LZUIViewController.h"
 #import <LSBluetoothUI_iOS/LSBluetoothUIManager.h>
+#import <LSDeviceManagerFramework/LSDeviceManager.h>
+#import <LSDeviceManagerFramework/LSDeviceManager+Connect.h>
+#import <LSDeviceManagerFramework/LSDeviceManager+Device.h>
 
 @interface LZUIViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -20,7 +23,6 @@
     self.title = @"乐智UI";
     self.view.backgroundColor = [UIColor whiteColor];
     [self createUI];
-    [self initUISDK];
 }
 
 - (void)createUI {
@@ -29,13 +31,6 @@
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
     [self.view addSubview:self.tableView];
-}
-
-- (void)initUISDK {
-    LSBluetoothUIAccountInfo *accountInfo = [[LSBluetoothUIAccountInfo alloc] init];
-    accountInfo.accessToken = self.accessToken;
-    accountInfo.userId = self.userId;
-    [[LSBluetoothUIManager shareInstance] initBluetoothUISDK:accountInfo];
 }
 
 #pragma mark - delegate

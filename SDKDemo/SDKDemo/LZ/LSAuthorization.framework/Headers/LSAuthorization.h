@@ -38,6 +38,9 @@ typedef NS_ENUM(NSInteger, LSAccessCode) {
 -(void) authorizeDevice:(NSString *)appId andService:(NSString *)serviceId andVersion:(NSString *)serviceVersion andMac:(NSString *)mac andModel:(NSString *)model withBlock:(void (^)(LSAccessCode)) complete;
 
 
+- (void)authorizeDevice:(NSString *)appKey appSecret:(NSString *)appSecret associatedId:(NSString *)associatedId block:(void (^)(LSAccessCode)) complete;
+
+
 
 /// 通用服务鉴权接口，针对算法、SDK等
 /// @param serviceId 服务ID，由服务中心指定

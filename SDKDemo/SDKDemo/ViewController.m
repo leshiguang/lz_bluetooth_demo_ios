@@ -13,6 +13,7 @@
 #import <LSDeviceManagerFramework/LSDeviceManager+Bind.h>
 #import <LSDeviceManagerFramework/LSDeviceManager+Device.h>
 #import <LSDeviceManagerFramework/LSDeviceManager+ScalesSetting.h>
+#import <LSBluetoothUI_iOS/LSBluetoothUIManager.h>
 
 #import <LSAuthorization/LSAuthorization.h>
 
@@ -87,8 +88,33 @@
         weakSelf.lzUserId = [NSString stringWithFormat:@"%ld",(long)userId];
         weakSelf.accessToken = accessToken;
         [[LSDeviceManager shareInstance] loginWithUserId:weakSelf.lzUserId];
+        
+        LSBluetoothUIAccountInfo *accountInfo = [[LSBluetoothUIAccountInfo alloc] init];
+        accountInfo.userId = weakSelf.lzUserId;
+        accountInfo.accessToken = weakSelf.accessToken;
+        [[LSBluetoothUIManager shareInstance] initBluetoothUISDK:accountInfo];
+        [self connectDevice];
     }];
 }
+
+- (void)connectDevice {
+    [[LSDeviceManager shareInstance] getBoundDevices:@([self.lzUserId integerValue]) Completion:^(int code, NSString *msg, NSArray<Device *> *deviceList) {
+        if (code != 200) return;
+        if (deviceList.count == 0) {
+            NSLog(@"---------没有绑定设备");
+        }
+        for (Device *device in deviceList) {
+            [[LSDeviceManager shareInstance] connectDeviceWithDeviceInfo:device];
+            if ([device.isActive intValue] == 1) {
+                NSLog(@"连接设备-----------%@",device.model);
+                [[LSDeviceManager shareInstance] connectDeviceWithDeviceInfo:device];
+            }
+        }
+        
+    }];
+}
+
+
 - (void)stopSearchDevice {
     [[LSDeviceManager shareInstance] stopSearchDevice:^(BOOL isStop) {
         if (isStop) {

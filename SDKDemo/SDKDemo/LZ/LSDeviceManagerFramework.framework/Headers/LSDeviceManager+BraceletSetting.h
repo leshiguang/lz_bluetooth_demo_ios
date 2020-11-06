@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取手环设置项
 /// @param deviceId 设备Id
 /// @param setType 设置项类型
-- (id)redBraceletWithDeviceId:(NSString *)deviceId setType:(LSBraceletSettingStateType)setType;
+- (id)readBraceletWithDeviceId:(NSString *)deviceId setType:(LSBraceletSettingStateType)setType;
 
 
 #pragma mark -
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 运动项内容设置
 /// @param deviceId 设备Id
-/// @param items 设置的运动项内容 （see: LSSportItemType）
+/// @param items 设置的运动项内容 （see: LSSportItemSwitch）
 /// @param completion 回调
 - (void)setSportItems:(NSString *)deviceId items:(NSArray<LSSportItemSwitch *> *)items completion:(Completion)completion;
 

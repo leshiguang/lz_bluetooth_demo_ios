@@ -7,7 +7,6 @@
 //test
 #import <Foundation/Foundation.h>
 #import "LSDeviceComponentDelegate.h"
-#import "LSDeviceBleExceptionDelegate.h"
 #import "WalkingData.h"
 #import "WeightData.h"
 #import "RunningData.h"
@@ -281,7 +280,6 @@ typedef void(^DeviceConnectLogBlock)(NSString *deviceId);
 @interface LSDeviceManager : NSObject <LSBleDataReceiveDelegate>
 
 @property(nonatomic,weak)id<LSDeviceComponentDelegate>delegate;
-@property(nonatomic,weak)id<LSDeviceBleExceptionDelegate>exceptionDelegate;
 
 /**
  设置数据源，出于性能考虑，此属性的设置方法为非线程安全，请在合适的时机初始化。dataSource的方法会在不同线程同时调用，请实现方确保线程安全
@@ -344,7 +342,7 @@ typedef void(^DeviceConnectLogBlock)(NSString *deviceId);
 @property BOOL gpsHasReceived;
 @property BOOL gpsRejectReceive;
 
-@property(nonatomic, copy)      NSString *accToken;
+//@property(nonatomic, copy)      NSString *accToken;
 @property(nonatomic,strong)     WalkingData *walkingData;
 @property(nonatomic,strong)     CMPedometer *stepCounter;
 @property(nonatomic,copy)       CallBackBlock callBack;
@@ -436,17 +434,6 @@ typedef void(^DeviceConnectLogBlock)(NSString *deviceId);
  */
 - (void)deleteDeviceCacheWithUserId:(NSString *)userId;
 
-
-/**
- 注册系统蓝牙异常情况监听者，用于启动、收集设备在连接过程中出现的异常情况
-**/
-- (void)startRegisterBluetoothExceptionListener:(id)delegate;
-
-/**
- * 停止蓝牙异常情况收集
- */
-- (void)stopRegisterBluetoothExceptionLisener;
-    
 - (void)runBlockInIsolationQueue:(dispatch_block_t)block;
 
 
