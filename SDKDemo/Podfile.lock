@@ -3,61 +3,69 @@ PODS:
   - Logan (1.2.7):
     - Logan/mbedtls (= 1.2.7)
   - Logan/mbedtls (1.2.7)
-  - LZUISDK (0.2.0):
+  - LZUISDK (0.2.1):
     - IQKeyboardManager
     - Logan (~> 1.2.5)
-    - LZUISDK/LSAuthorization (= 0.2.0)
-    - LZUISDK/LSBluetooth (= 0.2.0)
-    - LZUISDK/LSBluetoothUI_iOS (= 0.2.0)
-    - LZUISDK/LSDeviceManagerFramework (= 0.2.0)
-    - LZUISDK/NetWork (= 0.2.0)
+    - LZUISDK/LSAuthorization (= 0.2.1)
+    - LZUISDK/LSBluetooth (= 0.2.1)
+    - LZUISDK/LSBluetoothUI_iOS (= 0.2.1)
+    - LZUISDK/LSDeviceManagerFramework (= 0.2.1)
+    - LZUISDK/NetWork (= 0.2.1)
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
-  - LZUISDK/LSAuthorization (0.2.0):
+  - LZUISDK/LSAuthorization (0.2.1):
     - IQKeyboardManager
     - Logan (~> 1.2.5)
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
-  - LZUISDK/LSBluetooth (0.2.0):
+  - LZUISDK/LSBluetooth (0.2.1):
     - IQKeyboardManager
     - Logan (~> 1.2.5)
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
-  - LZUISDK/LSBluetoothUI_iOS (0.2.0):
+  - LZUISDK/LSBluetoothUI_iOS (0.2.1):
     - IQKeyboardManager
     - Logan (~> 1.2.5)
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
-  - LZUISDK/LSDeviceManagerFramework (0.2.0):
+  - LZUISDK/LSDeviceManagerFramework (0.2.1):
     - IQKeyboardManager
     - Logan (~> 1.2.5)
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
-  - LZUISDK/NetWork (0.2.0):
+  - LZUISDK/NetWork (0.2.1):
     - IQKeyboardManager
     - Logan (~> 1.2.5)
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
   - Masonry (1.1.0)
+  - MJExtension (3.2.2)
   - SDWebImage (5.10.2):
     - SDWebImage/Core (= 5.10.2)
   - SDWebImage/Core (5.10.2)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - LZUISDK (~> 0.2.0)
+  - LZUISDK (~> 0.2.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - IQKeyboardManager
     - Logan
     - Masonry
+    - MJExtension
     - SDWebImage
     - YYModel
   https://github.com/leshiguang/cocoapods.git:
@@ -66,11 +74,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Logan: d7e508f88d596b186e9cdcc0cf35b45c89bbc22f
-  LZUISDK: 17a4398626802369a75120cbd68e4e25930d3cb6
+  LZUISDK: 6fa0120491425cd564f7da09fd78a91dabb46792
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9f4082feac29f669ea562b53ad886a3845c1fd53
+PODFILE CHECKSUM: c663af7388ef48e27ac76251e37b9f729fed1a07
 
 COCOAPODS: 1.10.0

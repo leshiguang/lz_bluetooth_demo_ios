@@ -60,7 +60,7 @@
     [LSDeviceManager shareInstance].bloodPressureDataDelegate = self;
     
     __weak typeof(self) weakSelf = self;
-    [[LSAuthorization sharedInstance] authorizeDevice:@"lxd81836bc0ffa8084" appSecret:@"d7c3ad483bebe3c99b67b521b96efad0d5d8c4d1" associatedId:@"wm123456ls" callback:^(NSUInteger userId, NSString * _Nonnull accessToken) {
+    [[LSAuthorization sharedInstance] authorizeDevice:@"" appSecret:@"" associatedId:@"" callback:^(NSUInteger userId, NSString * _Nonnull accessToken) {
         
         weakSelf.lzUserId = [NSString stringWithFormat:@"%ld",(long)userId];
         weakSelf.accessToken = accessToken;
@@ -69,7 +69,7 @@
         LSBluetoothUIAccountInfo *accountInfo = [[LSBluetoothUIAccountInfo alloc] init];
         accountInfo.userId = weakSelf.lzUserId;
         accountInfo.accessToken = weakSelf.accessToken;
-        accountInfo.tenantName = @"dingding";
+        accountInfo.tenantName = @"轻脂健康";
         [[LSBluetoothUIManager shareInstance] initBluetoothUISDK:accountInfo];
         
         [[LSDeviceManager shareInstance] uploadFile];
@@ -164,11 +164,17 @@
             walkingData = (WalkingData *)data;
         }
             break;
-            
+
         default:
             break;
     }
 }
+
+- (void)onDeviceStatusChange:(nonnull DeviceStatus *)status {}
+
+
+- (void)onReceiveRealTimeHeartRateData:(nonnull LSURealTimeHRData *)realTimeHRData targetDeviceInfo:(nonnull LSDeviceInfo *)device {}
+
 
 #pragma mark - ScalesReceiveDataDelegate
 - (void)onReceiveScalesWeightData:(WeightData *)weightData {}
@@ -194,16 +200,17 @@
 - (NSArray *)dataSouceAry {
     if (!_dataSouceAry) {
         _dataSouceAry = @[@{@"title":@"同步用户信息"}
-                            ,@{@"title":@"睡眠"}
-                            ,@{@"title":@"心率"}
-                            ,@{@"title":@"体重"}
-                            ,@{@"title":@"步数"}
-                            ,@{@"title":@"血压"}
-                            ,@{@"title":@"有氧能力"}
-                            ,@{@"title":@"我的设备"}
-                            ,@{@"title":@"获取设备信息"}
+                          ,@{@"title":@"睡眠"}
+                          ,@{@"title":@"心率"}
+                          ,@{@"title":@"体重"}
+                          ,@{@"title":@"步数"}
+                          ,@{@"title":@"血压"}
+                          ,@{@"title":@"有氧能力"}
+                          ,@{@"title":@"我的设备"}
+                          ,@{@"title":@"获取设备信息"}
         ];
     }
     return _dataSouceAry;
 }
+
 @end

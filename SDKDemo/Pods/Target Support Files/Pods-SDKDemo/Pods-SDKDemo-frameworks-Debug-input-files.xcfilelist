@@ -7,6 +7,7 @@ ${PODS_ROOT}/LZUISDK/LZUISDK/SDK/LSBluetoothUI_iOS.framework
 ${PODS_ROOT}/LZUISDK/LZUISDK/SDK/LSDeviceManagerFramework.framework
 ${PODS_ROOT}/LZUISDK/LZUISDK/SDK/LSNetwork_iOS.framework
 ${BUILT_PRODUCTS_DIR}/Logan/Logan.framework
+${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework
