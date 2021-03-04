@@ -7,19 +7,10 @@
 //
 
 #import "ViewController.h"
-#import <Masonry.h>
-#import <LSBluetoothUI_iOS/LSBluetoothUIManager.h>
-#import <YYModel/YYModel.h>
-#import <CoreLocation/CoreLocation.h>
-#import <LSDeviceManagerFramework/LSDeviceManager+ScalesSetting.h>
-#import <LSDeviceManagerFramework/LSDeviceManager+Connect.h>
-#import <LSDeviceManagerFramework/LSDeviceManager.h>
-#import <LSDeviceManagerFramework/LSDeviceManager+Device.h>
-#import <LSDeviceManagerFramework/LSDeviceManager+Sync.h>
-#import <LSDeviceManagerFramework/LSDeviceManager+Bind.h>
-#import <LSAuthorization/LSAuthorization.h>
+#import <Masonry/Masonry.h>
+#import <LSBluetoothUI_iOS/LSBluetoothUI.h>
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, BraceletReceiveDataDelegate,ScalesReceiveDataDelegate,BloodPressureReceiveDataDelegate,LSDeviceComponentDelegate>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSouceAry;
 
@@ -35,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"LSBluetoothDemo";
+    
     [self createUI];
     [self initSDK];
 }
@@ -51,34 +43,17 @@
 }
 
 - (void)initSDK {
+    LSBluetoothUIConfig *config = [[LSBluetoothUIConfig alloc] init];
+    config.appKey = @"lxd81836bc0ffa8084";
+    config.appSecret = @"d7c3ad483bebe3c99b67b521b96efad0d5d8c4d1";
+    config.tn = @"dingding";
+    config.debug = YES;
+    [LSBluetoothUI initWithConfig:config];
     
-    [[LSDeviceManager shareInstance] enablePrint:YES enableWriteToFile:YES];
-    //设置设备代理
-    [[LSDeviceManager shareInstance] addDelegate:self];
-    [LSDeviceManager shareInstance].braceletDataDelegate = self;
-    [LSDeviceManager shareInstance].scalesDataDelegate = self;
-    [LSDeviceManager shareInstance].bloodPressureDataDelegate = self;
-    
-    __weak typeof(self) weakSelf = self;
-    [[LSAuthorization sharedInstance] authorizeDevice:@"" appSecret:@"" associatedId:@"" callback:^(NSUInteger userId, NSString * _Nonnull accessToken) {
-        
-        weakSelf.lzUserId = [NSString stringWithFormat:@"%ld",(long)userId];
-        weakSelf.accessToken = accessToken;
-        [[LSDeviceManager shareInstance] loginWithUserId:weakSelf.lzUserId];
-        
-        LSBluetoothUIAccountInfo *accountInfo = [[LSBluetoothUIAccountInfo alloc] init];
-        accountInfo.userId = weakSelf.lzUserId;
-        accountInfo.accessToken = weakSelf.accessToken;
-        accountInfo.tenantName = @"轻脂健康";
-        [[LSBluetoothUIManager shareInstance] initBluetoothUISDK:accountInfo];
-        
-        [[LSDeviceManager shareInstance] uploadFile];
+    /// 登陆
+    [LSBluetoothUI loginWithAssociatedId:@"tanjian" completion:^(BOOL result) {
+        NSLog(@"登陆是否成功 %@", @(result));
     }];
-}
-
-- (void)requestProductList {
-    NSArray *ary = [[LSDeviceManager shareInstance] getProductInfoListAry];
-    NSLog(@"ary ---- %@",ary);
 }
 
 #pragma mark - tableView delegate
@@ -101,91 +76,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self HandlerClickCellItem:self.dataSouceAry[indexPath.row]];
+    NSDictionary *dic = self.dataSouceAry[indexPath.row];
+    LSPage page = [dic[@"page"] integerValue];
+    [LSBluetoothUI openPage:page];
 }
 
 #pragma mark - handler
-
-- (void)HandlerClickCellItem:(NSDictionary *)item {
-    if ([item[@"title"] isEqualToString:@"同步用户信息"]) {
-        LSBluetoothUIUserInfo *userInfo = [[LSBluetoothUIUserInfo alloc] init];
-        userInfo.name = @"wm";
-        userInfo.sex = @(1);
-        userInfo.birthday = @"960284898000";
-        userInfo.height = @(170);
-        userInfo.id = @([[LSBluetoothUIConfig defaultConfig].accountInfo.userId integerValue]);
-        [[LSBluetoothUIManager shareInstance] updateUserInfo:userInfo completion:^(LSBluetoothResultType resultType) {
-            if (resultType == LSBluetoothResultTypeSusses) {
-                NSLog(@"用户信息更新成功");
-            }
-        }];
-    } else if ([item[@"title"] isEqualToString:@"我的设备"]) {
-        [self.navigationController pushViewController:[[LSBluetoothUIManager shareInstance] lsPageBindDeviceList] animated:YES];
-    } else if ([item[@"title"] isEqualToString:@"体重"]) {
-        [[LSBluetoothUIManager shareInstance] lsOpenWeightPage];
-    } else if ([item[@"title"] isEqualToString:@"步数"]) {
-        [[LSBluetoothUIManager shareInstance] lsStepPage];
-    } else if ([item[@"title"] isEqualToString:@"睡眠"]) {
-        [[LSBluetoothUIManager shareInstance] lsSleepRatePage];
-    } else if ([item[@"title"] isEqualToString:@"心率"]) {
-        [[LSBluetoothUIManager shareInstance] lsHeartRatePage];
-    } else if ([item[@"title"] isEqualToString:@"血压"]) {
-        [[LSBluetoothUIManager shareInstance] lsBloodpressurePage];
-    } else if ([item[@"title"] isEqualToString:@"有氧能力"]) {
-        [[LSBluetoothUIManager shareInstance] lsAerobicRatePage];
-    } else if ([item[@"title"] isEqualToString:@"获取设备信息"]) {
-        [self requestProductList];
-    }
-}
-
-#pragma mark - LSDeviceComponentDelegate
-- (void)onBindStatusChange:(LSEBindStatusCode)bindCode device:(Device *)device deviceUsers:(NSArray<DeviceUser *> *)deviceUsers netCode:(NSInteger)netCode netMsg:(NSString *)netMsg object:(NSObject *)object {
-}
-
-- (void)onDeviceConnectStateChange:(BluetoothConnectState)connectState broadcastId:(NSString *)broadcastId {
-    NSLog(@"蓝牙连接状态改变----connectState:%ld broadcastId:%@",(long)connectState,broadcastId);
-}
-
-- (void)onReceiveTrackMode:(NSString *)deviceId state:(SportStateData *)state {
-    NSLog(@"轨迹跑模式回调接口 --- deviceId ------ %@",deviceId);
-}
-
-#pragma mark - BloodPressureReceiveDataDelegate
-- (void)onReceiveBraceletData:(id)data dataType:(BraceletReceiveDataType)type {
-    NSString *className = NSStringFromTransactionState(type);
-    NSLog(@"数据回调------%@",data);
-    Class cls = NSClassFromString(className);
-    if (![data isKindOfClass:cls]) {
-        return;
-    }
-    switch (type) {
-        case WalkingDataType: {
-            WalkingData *walkingData = [[cls alloc] init];
-            walkingData = (WalkingData *)data;
-        }
-            break;
-
-        default:
-            break;
-    }
-}
-
-- (void)onDeviceStatusChange:(nonnull DeviceStatus *)status {}
-
-
-- (void)onReceiveRealTimeHeartRateData:(nonnull LSURealTimeHRData *)realTimeHRData targetDeviceInfo:(nonnull LSDeviceInfo *)device {}
-
-
-#pragma mark - ScalesReceiveDataDelegate
-- (void)onReceiveScalesWeightData:(WeightData *)weightData {}
-
-- (void)onReceiveSaclesSsidName:(LSScaleWifiModel *)wifiMode {}
-
-- (void)onReceiveScalesWifiConnectState:(NSInteger *)state {}
-
-#pragma mark - BloodPressureReceiveDataDelegate
-- (void)onReceiveBloodPressureMeasureData:(LSSphygmometerData *)bloodPressureData {}
-
 #pragma mark - setter getter
 - (UITableView *)tableView {
     if (!_tableView) {
@@ -199,18 +95,15 @@
 
 - (NSArray *)dataSouceAry {
     if (!_dataSouceAry) {
-        _dataSouceAry = @[@{@"title":@"同步用户信息"}
-                          ,@{@"title":@"睡眠"}
-                          ,@{@"title":@"心率"}
-                          ,@{@"title":@"体重"}
-                          ,@{@"title":@"步数"}
-                          ,@{@"title":@"血压"}
-                          ,@{@"title":@"有氧能力"}
-                          ,@{@"title":@"我的设备"}
-                          ,@{@"title":@"获取设备信息"}
+        _dataSouceAry = @[
+            @{@"title":@"睡眠", @"page": @(LSPageSleep)},
+        @{@"title":@"心率", @"page": @(LSPageHr)},
+        @{@"title":@"体重", @"page": @(LSPageWeight)},
+        @{@"title":@"步数", @"page": @(LSPageStep)},
+        @{@"title":@"血压", @"page": @(LSPageBloodPressure)},
+        @{@"title":@"我的设备", @"page": @(LSPageDeviceList)}
         ];
     }
     return _dataSouceAry;
 }
-
 @end
