@@ -10,7 +10,7 @@
 #import <Masonry/Masonry.h>
 #import <LSBluetoothUI_iOS/LSBluetoothUI.h>
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, LSDeviceManagerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSouceAry;
 
@@ -50,9 +50,16 @@
     config.debug = YES;
     [LSBluetoothUI initWithConfig:config];
     
+    [LSBluetoothUI addDelegate:self];
+    
     /// 登陆
     [LSBluetoothUI loginWithAssociatedId:@"tanjian" completion:^(BOOL result) {
         NSLog(@"登陆是否成功 %@", @(result));
+        
+        if (result) {
+            NSArray *list = [LSBluetoothUI getBoundDevices];
+            NSLog(@"list %@", list);
+        }
     }];
 }
 
@@ -79,6 +86,14 @@
     NSDictionary *dic = self.dataSouceAry[indexPath.row];
     LSPage page = [dic[@"page"] integerValue];
     [LSBluetoothUI openPage:page];
+}
+
+#pragma mark - LSDeviceManagerDelegate
+- (void)deviceDidReceiveMeasurementDatas:(NSArray<__kindof LSReceiveData *> *)measurementDatas dataType:(LSMeasurementDataType)dataType {
+    if (dataType == LSMeasurementDataTypeWeight) {
+        NSLog(@"体重数据");
+    }
+    NSLog(@"receiveData %@", measurementDatas);
 }
 
 #pragma mark - handler

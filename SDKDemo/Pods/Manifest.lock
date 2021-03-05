@@ -3,14 +3,14 @@ PODS:
   - Logan (1.2.7):
     - Logan/mbedtls (= 1.2.7)
   - Logan/mbedtls (1.2.7)
-  - LSBluetoothUI_iOS (0.3.0):
+  - LSBluetoothUI_iOS (0.3.1):
     - IQKeyboardManager (>= 4)
     - Logan (~> 1.2)
     - LZBluetooth (~> 1.5)
     - Masonry (~> 1.1)
-    - SDWebImage (>= 4)
+    - SDWebImage (~> 5)
     - YYModel (~> 1.0)
-  - LZBluetooth (1.5)
+  - LZBluetooth (1.5.1)
   - Masonry (1.1.0)
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
@@ -18,7 +18,8 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - LSBluetoothUI_iOS (~> 0.3)
+  - LSBluetoothUI_iOS (~> 0.3.1)
+  - LZBluetooth (~> 1.5.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -34,12 +35,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Logan: d7e508f88d596b186e9cdcc0cf35b45c89bbc22f
-  LSBluetoothUI_iOS: c2dfc38f0b6472a974339699ae3b76e605391de1
-  LZBluetooth: 06e097ba26cbc9abad34d0d48893ab8cde01b05a
+  LSBluetoothUI_iOS: 59a330f0eaf83a9ed668c50f62c34f2ac4833c55
+  LZBluetooth: d6098c62c51279a6fc9224d05a49c50362481e89
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 445186cc0888541ca2531f2834b0dc1b36d027c9
+PODFILE CHECKSUM: 2ba213edd2dcbe2b3cc6d87990636e21d0530f9e
 
 COCOAPODS: 1.10.0
