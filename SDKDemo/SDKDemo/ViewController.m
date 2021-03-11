@@ -43,10 +43,11 @@
 }
 
 - (void)initSDK {
+    /// 需要提供 自己的appkey
     LSBluetoothUIConfig *config = [[LSBluetoothUIConfig alloc] init];
-    config.appKey = @"lxd81836bc0ffa8084";
-    config.appSecret = @"d7c3ad483bebe3c99b67b521b96efad0d5d8c4d1";
-    config.tn = @"dingding";
+    config.appKey = @"com.leshiguang.saas.rbac.demo.appid";
+    config.appSecret = @"xxxxx";
+    config.tn = @"xxx";
     config.debug = YES;
     [LSBluetoothUI initWithConfig:config];
     
