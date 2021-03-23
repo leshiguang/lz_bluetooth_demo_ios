@@ -177,7 +177,7 @@
 				97926AFC2520B9640043ED60 /* Frameworks */,
 				97926AFD2520B9640043ED60 /* Resources */,
 				97926B7F2520BD2D0043ED60 /* CopyFiles */,
-				33DA0A6E777886B0DCED0C39 /* [CP] Embed Pods Frameworks */,
+				84308297E4BC03BD392B2142 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,7 +314,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		33DA0A6E777886B0DCED0C39 /* [CP] Embed Pods Frameworks */ = {
+		84308297E4BC03BD392B2142 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -515,7 +515,7 @@
 					"$(PROJECT_DIR)/SDKDemo/LZ",
 				);
 				INFOPLIST_FILE = SDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,7 +544,7 @@
 					"$(PROJECT_DIR)/SDKDemo/LZ",
 				);
 				INFOPLIST_FILE = SDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

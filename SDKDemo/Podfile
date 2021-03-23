@@ -6,6 +6,6 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'SDKDemo' do
-  pod 'LSBluetoothUI_iOS', '~> 0.4.0'
-  pod 'LZBluetooth', '~> 1.5.1'
+  pod 'LSBluetoothUI_iOS', '0.4.1'
+  pod 'LZBluetooth', '1.6.2'
 end
