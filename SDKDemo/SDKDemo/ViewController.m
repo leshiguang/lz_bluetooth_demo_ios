@@ -45,7 +45,7 @@
 - (void)initSDK {
     /// 需要提供 自己的appkey
     LSBluetoothUIConfig *config = [[LSBluetoothUIConfig alloc] init];
-    config.appKey = @"com.leshiguang.saas.rbac.demo.appid";
+    config.appKey = @"xxx";
     config.appSecret = @"xxxxx";
     config.tn = @"xxx";
     config.debug = YES;
@@ -54,7 +54,7 @@
     [LSBluetoothUI addDelegate:self];
     
     /// 登陆
-    [LSBluetoothUI loginWithAssociatedId:@"tanjian" completion:^(BOOL result) {
+    [LSBluetoothUI loginWithAssociatedId:@"xxx" completion:^(BOOL result) {
         NSLog(@"登陆是否成功 %@", @(result));
         
         if (result) {
@@ -95,6 +95,29 @@
         NSLog(@"体重数据");
     }
     NSLog(@"receiveData %@", measurementDatas);
+}
+
+- (void)device:(LSDevice *)device bindStateChanged:(LSBindStatus)bindState netCode:(NSInteger)netCode netMsg:(NSString *)netMsg {
+    if (bindState == LSBindStatusSuccessful) {
+        if (device.deviceType == LSDeviceTypePedometer || device.deviceType == LSDeviceTypeBand) {
+            LZA5SettingEventRemindData *data = [[LZA5SettingEventRemindData alloc] init];
+            /// 事件提醒的索引， 需要开发者自己计算，唯一ID （最多5个提醒）
+            data.index = 1;
+            data.enable = YES;
+            data.hour = 11;
+            data.minute = 59;
+            data.des = @"喝水";
+            data.repeatFlag = LZA5RepeatTimeFlagAll;
+            data.vibrationTime = 10;
+            data.vibrationType = LZA5VibrationTypeAlways;
+            data.vibrationLevel1 = 9;
+            data.vibrationLevel2 = 9;
+            
+            [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
+                NSLog(@"发送结果 %@", @(code));
+            }];
+        }
+    }
 }
 
 #pragma mark - handler
