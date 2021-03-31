@@ -46,14 +46,14 @@
     /// 需要提供 自己的appkey
     LSBluetoothUIConfig *config = [[LSBluetoothUIConfig alloc] init];
     config.appKey = @"xxx";
-    config.appSecret = @"xxxxx";
+    config.appSecret = @"xx";
     config.tn = @"xxx";
     config.debug = YES;
     [LSBluetoothUI initWithConfig:config];
     
     [LSBluetoothUI addDelegate:self];
     
-    /// 登陆
+    /// 登陆 associatedId 一般为自己账号系统下的用户id
     [LSBluetoothUI loginWithAssociatedId:@"xxx" completion:^(BOOL result) {
         NSLog(@"登陆是否成功 %@", @(result));
         
@@ -115,6 +115,19 @@
             
             [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
                 NSLog(@"发送结果 %@", @(code));
+            }];
+            
+            double latitude = 31.209086100260418;
+            double longitude = 121.40808648003473;
+            NSString *adcode = @"310105";
+            
+            /// 其中adcode 可以通过第三方地图获取，比如阿里地图与百度地图
+            [LZBluetooth requestWeatherWithLng:longitude lat:latitude adcode:adcode completion:^(NSInteger code, NSString * _Nonnull msg, LZWeatherData * _Nonnull data) {
+                if (data) {
+                    [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
+                        NSLog(@"发送结果 %@", @(code));
+                    }];
+                }
             }];
         }
     }

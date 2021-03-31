@@ -3,7 +3,7 @@ PODS:
   - Logan (1.2.7):
     - Logan/mbedtls (= 1.2.7)
   - Logan/mbedtls (1.2.7)
-  - LSBluetoothUI_iOS (0.4.2):
+  - LSBluetoothUI_iOS (0.4.4):
     - IQKeyboardManager (>= 4)
     - Logan (~> 1.2)
     - LZBluetooth (~> 1.6)
@@ -18,7 +18,7 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - LSBluetoothUI_iOS (= 0.4.2)
+  - LSBluetoothUI_iOS (= 0.4.4)
   - LZBluetooth (= 1.6.3)
 
 SPEC REPOS:
@@ -35,12 +35,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Logan: d7e508f88d596b186e9cdcc0cf35b45c89bbc22f
-  LSBluetoothUI_iOS: 9158f5f7cf5b1620667e5dc107d11277f9ffd742
+  LSBluetoothUI_iOS: e591401ff9553860cc8a528d4f651c8fbf73f1ba
   LZBluetooth: 72bacfd494b856c1cf92ee2690d495e85abba49c
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3c8fc522a9d3a117b4ff21e6a4ece44f214dede9
+PODFILE CHECKSUM: 48cc00fec3cc852b90a09fba8055adcc70ff0523
 
 COCOAPODS: 1.10.0
