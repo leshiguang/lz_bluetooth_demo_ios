@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import <LSBluetoothUI_iOS/LSBluetoothUI.h>
 
 @interface AppDelegate ()
 
@@ -25,6 +26,16 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+/// 目前主要是处理微信分享的回调
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [LSBluetoothUI handleUrl:url];
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray<id<UIUserActivityRestoring>> * __nullable restorableObjects))restorationHandler {
+    return [LSBluetoothUI  handleOpenUniversalLink:userActivity];
 }
 
 

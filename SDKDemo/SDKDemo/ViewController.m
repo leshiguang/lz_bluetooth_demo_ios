@@ -9,8 +9,21 @@
 #import "ViewController.h"
 #import <Masonry/Masonry.h>
 #import <LSBluetoothUI_iOS/LSBluetoothUI.h>
+#import <LSBluetoothUI_iOS/UIViewController+MBProgressHUD.h>
+@import SDWebImage;
+
+typedef NS_ENUM(NSUInteger, LSTestType) {
+    LSTestTypePage,
+    LSTestTypeLogin,
+    LSTestTypeLogout,
+    
+};
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, LSDeviceManagerDelegate>
+
+@property (nonatomic, strong) UILabel *userInfoLabel;
+@property (nonatomic, strong) UITextField *textField;
+
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSouceAry;
 
@@ -33,35 +46,91 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 - (void)createUI {
+    [self.view addSubview:self.userInfoLabel];
+    [self.view addSubview:self.textField];
     [self.view addSubview:self.tableView];
+    
+    [self.userInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(5);
+        } else {
+            // Fallback on earlier versions
+            make.top.equalTo(self.view).offset(5 + 64);
+        }
+        make.left.equalTo(self.view.mas_left).offset(15);
+        make.right.equalTo(self.view.mas_right).offset(-15);
+        make.height.equalTo(@(50));
+    }];
+    
+    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.userInfoLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.view.mas_left).offset(15);
+        make.right.equalTo(self.view.mas_right).offset(-15);
+        make.height.equalTo(@(50));
+    }];
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
+        make.top.equalTo(self.textField.mas_bottom).offset(10);
+        make.left.right.bottom.equalTo(self.view);
     }];
 }
 
 - (void)initSDK {
-    /// 需要提供 自己的appkey
+
     LSBluetoothUIConfig *config = [[LSBluetoothUIConfig alloc] init];
-    config.appKey = @"xxx";
-    config.appSecret = @"xx";
-    config.tn = @"xxx";
+    
+    /// 需要申请
+    config.appKey = @"xxxx";
+    /// 需要申请
+    config.appSecret = @"xxxx";
+    /// 需要申请
+    config.tn = @"xxxx";
+    /// 需要申请
+    config.appType = @"xxxx";
+    
+#ifdef DEBUG
     config.debug = YES;
+#endif
+    
+    /// 需要去微信开放平台申请
+    config.wxAppid = @"wx2476166986b43ce4";
+    /// 需要自己设置 参考微信开放平台
+    config.wxUniversalLink = @"https://www.lifesense.com/";
     [LSBluetoothUI initWithConfig:config];
     
     [LSBluetoothUI addDelegate:self];
     
-    /// 登陆 associatedId 一般为自己账号系统下的用户id
-    [LSBluetoothUI loginWithAssociatedId:@"xxx" completion:^(BOOL result) {
-        NSLog(@"登陆是否成功 %@", @(result));
-        
-        if (result) {
-            NSArray *list = [LSBluetoothUI getBoundDevices];
-            NSLog(@"list %@", list);
-        }
+    __weak typeof(self) weakSelf = self;
+    
+    /// 这个associateId 一般可以使用你们自己平台上的用户id，
+    [LSBluetoothUI loginWithAssociatedId:self.textField.text completion:^(BOOL result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf hideActivityIndicatorHUD];
+            [[UIApplication sharedApplication].keyWindow endEditing:YES];
+            NSString *msg = result ? @"切换成功": @"切换失败";
+            [weakSelf showHintMessage:msg duration:1.5];
+            weakSelf.userInfoLabel.text = result ? [NSString stringWithFormat:@"当前associatedId:%@", weakSelf.textField.text] : @"未登录";
+        });
     }];
+    
+    
+    // 注册桥接口， 自定义处理比如分享相关的桥接口服务
+    [LSBluetoothUI registerHandler:LSJBShareWxminiProgramName handler:^(id  _Nullable data, LSJBResponseCallback  _Nonnull responseCallback) {
+        NSLog(@"data %@", data);
+        responseCallback(@{@"code" : @(0),
+                           @"errMessage" : @""});
+    }];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
 }
 
 #pragma mark - tableView delegate
@@ -85,16 +154,45 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dic = self.dataSouceAry[indexPath.row];
-    LSPage page = [dic[@"page"] integerValue];
-    [LSBluetoothUI openPage:page];
+    LSTestType testType = [dic[@"type"] integerValue];
+    switch (testType) {
+        case LSTestTypePage: {
+            LSPage page = [dic[@"page"] integerValue];
+            [LSBluetoothUI openPage:page];
+            break;
+        }
+        case LSTestTypeLogin: {
+            [self showActivityIndicatorViewWithTitle:@""];
+            __weak typeof(self) weakSelf = self;
+            
+            [LSBluetoothUI loginWithAssociatedId:self.textField.text completion:^(BOOL result) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf hideActivityIndicatorHUD];
+                    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+                    NSString *msg = result ? @"切换成功": @"切换失败";
+                    [weakSelf showHintMessage:msg duration:1.5];
+                    weakSelf.userInfoLabel.text = result ? [NSString stringWithFormat:@"当前associatedId:%@", weakSelf.textField.text] : @"未登录";
+                });
+            }];
+            break;
+        }
+        case LSTestTypeLogout: {
+            [LSBluetoothUI logout];
+            self.userInfoLabel.text = @"未登录";
+            break;
+        }
+    }
+    
 }
 
 #pragma mark - LSDeviceManagerDelegate
 - (void)deviceDidReceiveMeasurementDatas:(NSArray<__kindof LSReceiveData *> *)measurementDatas dataType:(LSMeasurementDataType)dataType {
     if (dataType == LSMeasurementDataTypeWeight) {
         NSLog(@"体重数据");
+        WeightData *data = (WeightData *)measurementDatas;
+        NSLog(@"%@", data);
     }
-    NSLog(@"receiveData %@", measurementDatas);
+    
 }
 
 - (void)device:(LSDevice *)device bindStateChanged:(LSBindStatus)bindState netCode:(NSInteger)netCode netMsg:(NSString *)netMsg {
@@ -116,6 +214,7 @@
             [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
                 NSLog(@"发送结果 %@", @(code));
             }];
+            
             
             double latitude = 31.209086100260418;
             double longitude = 121.40808648003473;
@@ -145,15 +244,44 @@
     return _tableView;
 }
 
+- (UILabel *)userInfoLabel {
+    if (!_userInfoLabel) {
+        _userInfoLabel = [[UILabel alloc] init];
+        _userInfoLabel.text = @"当前未登录";
+        _userInfoLabel.numberOfLines = 0;
+        _userInfoLabel.font = [UIFont systemFontOfSize:14];
+    }
+    return _userInfoLabel;
+}
+
+- (UITextField *)textField {
+    if (!_textField) {
+        _textField = [[UITextField alloc] init];
+        _textField.borderStyle = UITextBorderStyleRoundedRect;
+        _textField.keyboardType = UIKeyboardTypeASCIICapable;
+        _textField.placeholder = @"请输入用户的AssociatedId";
+        
+//        _textField.text = @"tanjian";
+    }
+    return _textField;
+}
+
 - (NSArray *)dataSouceAry {
     if (!_dataSouceAry) {
         _dataSouceAry = @[
-            @{@"title":@"睡眠", @"page": @(LSPageSleep)},
-        @{@"title":@"心率", @"page": @(LSPageHr)},
-        @{@"title":@"体重", @"page": @(LSPageWeight)},
-        @{@"title":@"步数", @"page": @(LSPageStep)},
-        @{@"title":@"血压", @"page": @(LSPageBloodPressure)},
-        @{@"title":@"我的设备", @"page": @(LSPageDeviceList)}
+            @{@"title":@"切换用户", @"type": @(LSTestTypeLogin)},
+            @{@"title":@"睡眠", @"page": @(LSPageSleep), @"type": @(LSTestTypePage)},
+            @{@"title":@"心率", @"page": @(LSPageHr), @"type": @(LSTestTypePage)},
+            @{@"title":@"体重", @"page": @(LSPageWeight), @"type": @(LSTestTypePage)},
+            @{@"title":@"步数", @"page": @(LSPageStep), @"type": @(LSTestTypePage)},
+            @{@"title":@"血压", @"page": @(LSPageBloodPressure), @"type": @(LSTestTypePage)},
+            @{@"title":@"血糖", @"page": @(LSPageBloodSugar), @"type": @(LSTestTypePage)},
+            @{@"title":@"我的设备", @"page": @(LSPageDeviceList), @"type": @(LSTestTypePage)},
+            @{@"title":@"顾问中心", @"page": @(LSPageConsultantCenter), @"type": @(LSTestTypePage)},
+            
+            @{@"title":@"退出登录", @"type": @(LSTestTypeLogout)},
+            
+            
         ];
     }
     return _dataSouceAry;
