@@ -6,7 +6,7 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'SDKDemo' do
-  pod 'LSBluetoothUI_iOS', '~> 0.5.0'
+  pod 'LSBluetoothUI_iOS', '~> 0.5.3'
   pod 'LZBluetooth', '1.6.9'
   
   # 如果自己实现分享，则不需要以下两个库

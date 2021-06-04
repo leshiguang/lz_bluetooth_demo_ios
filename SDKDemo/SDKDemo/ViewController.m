@@ -108,7 +108,7 @@ typedef NS_ENUM(NSUInteger, LSTestType) {
     __weak typeof(self) weakSelf = self;
     
     /// 这个associateId 一般可以使用你们自己平台上的用户id，
-    [LSBluetoothUI loginWithAssociatedId:self.textField.text completion:^(BOOL result) {
+    [LSBluetoothUI loginWithAssociatedId:self.textField.text softLogin:NO completion:^(BOOL result) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf hideActivityIndicatorHUD];
             [[UIApplication sharedApplication].keyWindow endEditing:YES];
@@ -165,7 +165,7 @@ typedef NS_ENUM(NSUInteger, LSTestType) {
             [self showActivityIndicatorViewWithTitle:@""];
             __weak typeof(self) weakSelf = self;
             
-            [LSBluetoothUI loginWithAssociatedId:self.textField.text completion:^(BOOL result) {
+            [LSBluetoothUI loginWithAssociatedId:self.textField.text softLogin:NO completion:^(BOOL result) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf hideActivityIndicatorHUD];
                     [[UIApplication sharedApplication].keyWindow endEditing:YES];

@@ -1,8 +1,0 @@
-${PODS_ROOT}/Target Support Files/Pods-SDKDemo/Pods-SDKDemo-frameworks.sh
-${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
-${PODS_ROOT}/LSBluetoothUI_iOS/LSBluetoothUI_iOS.framework
-${PODS_ROOT}/LZBluetooth/LZBluetooth.framework
-${BUILT_PRODUCTS_DIR}/Logan/Logan.framework
-${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
-${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
-${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework

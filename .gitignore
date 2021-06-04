@@ -26,5 +26,6 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 #CocoaPods
-Pods/
+SDKDemo/Pods/
 SDKDemo.zip
+
