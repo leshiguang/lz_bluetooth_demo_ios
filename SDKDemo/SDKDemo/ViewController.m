@@ -10,7 +10,7 @@
 #import <Masonry/Masonry.h>
 #import <LSBluetoothUI_iOS/LSBluetoothUI.h>
 #import <LSBluetoothUI_iOS/UIViewController+MBProgressHUD.h>
-@import SDWebImage;
+#import <SDWebImage/SDImageCache.h>
 
 typedef NS_ENUM(NSUInteger, LSTestType) {
     LSTestTypePage,
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, LSTestType) {
     
 };
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, LSDeviceManagerDelegate>
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel *userInfoLabel;
 @property (nonatomic, strong) UITextField *textField;
@@ -103,7 +103,7 @@ typedef NS_ENUM(NSUInteger, LSTestType) {
     config.wxUniversalLink = @"https://www.lifesense.com/";
     [LSBluetoothUI initWithConfig:config];
     
-    [LSBluetoothUI addDelegate:self];
+//    [LSBluetoothUI addDelegate:self];
     
     __weak typeof(self) weakSelf = self;
     
@@ -186,51 +186,51 @@ typedef NS_ENUM(NSUInteger, LSTestType) {
 }
 
 #pragma mark - LSDeviceManagerDelegate
-- (void)deviceDidReceiveMeasurementDatas:(NSArray<__kindof LSReceiveData *> *)measurementDatas dataType:(LSMeasurementDataType)dataType {
-    if (dataType == LSMeasurementDataTypeWeight) {
-        NSLog(@"体重数据");
-        WeightData *data = (WeightData *)measurementDatas;
-        NSLog(@"%@", data);
-    }
-    
-}
+//- (void)deviceDidReceiveMeasurementDatas:(NSArray<__kindof LSReceiveData *> *)measurementDatas dataType:(LSMeasurementDataType)dataType {
+//    if (dataType == LSMeasurementDataTypeWeight) {
+//        NSLog(@"体重数据");
+//        WeightData *data = (WeightData *)measurementDatas;
+//        NSLog(@"%@", data);
+//    }
+//
+//}
 
-- (void)device:(LSDevice *)device bindStateChanged:(LSBindStatus)bindState netCode:(NSInteger)netCode netMsg:(NSString *)netMsg {
-    if (bindState == LSBindStatusSuccessful) {
-        if (device.deviceType == LSDeviceTypePedometer || device.deviceType == LSDeviceTypeBand) {
-            LZA5SettingEventRemindData *data = [[LZA5SettingEventRemindData alloc] init];
-            /// 事件提醒的索引， 需要开发者自己计算，唯一ID （最多5个提醒）
-            data.index = 1;
-            data.enable = YES;
-            data.hour = 11;
-            data.minute = 59;
-            data.des = @"喝水";
-            data.repeatFlag = LZA5RepeatTimeFlagAll;
-            data.vibrationTime = 10;
-            data.vibrationType = LZA5VibrationTypeAlways;
-            data.vibrationLevel1 = 9;
-            data.vibrationLevel2 = 9;
-            
-            [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
-                NSLog(@"发送结果 %@", @(code));
-            }];
-            
-            
-            double latitude = 31.209086100260418;
-            double longitude = 121.40808648003473;
-            NSString *adcode = @"310105";
-            
-            /// 其中adcode 可以通过第三方地图获取，比如阿里地图与百度地图
-            [LZBluetooth requestWeatherWithLng:longitude lat:latitude adcode:adcode completion:^(NSInteger code, NSString * _Nonnull msg, LZWeatherData * _Nonnull data) {
-                if (data) {
-                    [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
-                        NSLog(@"发送结果 %@", @(code));
-                    }];
-                }
-            }];
-        }
-    }
-}
+//- (void)device:(LSDevice *)device bindStateChanged:(LSBindStatus)bindState netCode:(NSInteger)netCode netMsg:(NSString *)netMsg {
+//    if (bindState == LSBindStatusSuccessful) {
+//        if (device.deviceType == LSDeviceTypePedometer || device.deviceType == LSDeviceTypeBand) {
+//            LZA5SettingEventRemindData *data = [[LZA5SettingEventRemindData alloc] init];
+//            /// 事件提醒的索引， 需要开发者自己计算，唯一ID （最多5个提醒）
+//            data.index = 1;
+//            data.enable = YES;
+//            data.hour = 11;
+//            data.minute = 59;
+//            data.des = @"喝水";
+//            data.repeatFlag = LZA5RepeatTimeFlagAll;
+//            data.vibrationTime = 10;
+//            data.vibrationType = LZA5VibrationTypeAlways;
+//            data.vibrationLevel1 = 9;
+//            data.vibrationLevel2 = 9;
+//
+//            [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
+//                NSLog(@"发送结果 %@", @(code));
+//            }];
+//
+//
+//            double latitude = 31.209086100260418;
+//            double longitude = 121.40808648003473;
+//            NSString *adcode = @"310105";
+//
+//            /// 其中adcode 可以通过第三方地图获取，比如阿里地图与百度地图
+//            [LZBluetooth requestWeatherWithLng:longitude lat:latitude adcode:adcode completion:^(NSInteger code, NSString * _Nonnull msg, LZWeatherData * _Nonnull data) {
+//                if (data) {
+//                    [LSBluetoothUI setSetting:data device:device completion:^(LZBluetoothErrorCode code) {
+//                        NSLog(@"发送结果 %@", @(code));
+//                    }];
+//                }
+//            }];
+//        }
+//    }
+//}
 
 #pragma mark - handler
 #pragma mark - setter getter
@@ -270,13 +270,13 @@ typedef NS_ENUM(NSUInteger, LSTestType) {
     if (!_dataSouceAry) {
         _dataSouceAry = @[
             @{@"title":@"切换用户", @"type": @(LSTestTypeLogin)},
-            @{@"title":@"睡眠", @"page": @(LSPageSleep), @"type": @(LSTestTypePage)},
-            @{@"title":@"心率", @"page": @(LSPageHr), @"type": @(LSTestTypePage)},
-            @{@"title":@"体重", @"page": @(LSPageWeight), @"type": @(LSTestTypePage)},
-            @{@"title":@"步数", @"page": @(LSPageStep), @"type": @(LSTestTypePage)},
-            @{@"title":@"血压", @"page": @(LSPageBloodPressure), @"type": @(LSTestTypePage)},
-            @{@"title":@"血糖", @"page": @(LSPageBloodSugar), @"type": @(LSTestTypePage)},
-            @{@"title":@"我的设备", @"page": @(LSPageDeviceList), @"type": @(LSTestTypePage)},
+//            @{@"title":@"睡眠", @"page": @(LSPageSleep), @"type": @(LSTestTypePage)},
+//            @{@"title":@"心率", @"page": @(LSPageHr), @"type": @(LSTestTypePage)},
+//            @{@"title":@"体重", @"page": @(LSPageWeight), @"type": @(LSTestTypePage)},
+//            @{@"title":@"步数", @"page": @(LSPageStep), @"type": @(LSTestTypePage)},
+//            @{@"title":@"血压", @"page": @(LSPageBloodPressure), @"type": @(LSTestTypePage)},
+//            @{@"title":@"血糖", @"page": @(LSPageBloodSugar), @"type": @(LSTestTypePage)},
+//            @{@"title":@"我的设备", @"page": @(LSPageDeviceList), @"type": @(LSTestTypePage)},
             @{@"title":@"顾问中心", @"page": @(LSPageConsultantCenter), @"type": @(LSTestTypePage)},
             
             @{@"title":@"退出登录", @"type": @(LSTestTypeLogout)},
